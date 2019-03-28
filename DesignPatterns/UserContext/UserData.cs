@@ -8,7 +8,7 @@ namespace DesignPatterns.UserContext
 	/// Класс данных пользователя.
 	/// </summary>
 	[Serializable]
-	public class UserData : ISerializable
+	public class UserData : ISerializable, IEquatable<UserData>
 	{
 		/// <summary>
 		/// Имя игрока.
@@ -49,6 +49,11 @@ namespace DesignPatterns.UserContext
 			UserName = (string)info.GetValue("UserName", typeof(string));
 			UserMachine = (UserMachine)info.GetValue("UserMachine", typeof(UserMachine));
 			UserStatistics = (UserStatistics)info.GetValue("UserStatistics", typeof(UserStatistics));
+		}
+
+		public bool Equals(UserData other)
+		{
+			return UserName == other?.UserName;
 		}
 	}
 }

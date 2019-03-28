@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Runtime.Serialization;
 
@@ -8,7 +8,7 @@ namespace DesignPatterns.ProcessingData
 	/// Класс для работы с данными.
 	/// </summary>
 	/// <typeparam name="T">Класс сущности</typeparam>
-	public class RepositoryTable<T> : IRepositoryTable<T> where T : ISerializable
+	public class RepositoryTable<T> : IRepositoryTable<T> where T : ISerializable, IEquatable<T>
 	{
 		private readonly string _fileName;
 
@@ -42,7 +42,7 @@ namespace DesignPatterns.ProcessingData
 
 			if (data == null)
 			{
-				throw new ArgumentNullException(nameof(data));
+				return;
 			}
 
 			TableData.Remove(data);

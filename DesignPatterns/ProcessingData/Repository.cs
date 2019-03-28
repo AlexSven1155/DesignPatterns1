@@ -1,50 +1,41 @@
-using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.Serialization;
-
 namespace DesignPatterns.ProcessingData
 {
-	using UserContext;
 	using AbstractFactoryPattern.Machines.BaseClasses;
+	using UserContext;
 
 	/// <summary>
 	/// Класс данных игры.
 	/// </summary>
-	public static class Repository<T> where T : ISerializable
+	public class Repository
 	{
-		private static readonly Dictionary<string, IRepositoryTable<T>> DataCollection = new Dictionary<string, IRepositoryTable<T>>();
+		public IRepositoryTable<Gun> GunData;
+		public IRepositoryTable<Suspension> SuspensionsData;
+		public IRepositoryTable<BodyMachine> BodyMachinesData;
+		public IRepositoryTable<UserData> SavedUserData;
 
-		public static IRepositoryTable<T> GetTable(string path)
+		/// <summary>
+		/// Инициализируем классы данных.
+		/// </summary>
+		public Repository()
 		{
-			if (DataCollection.Keys.Any(e => e == path))
+			GunData = new RepositoryTable<Gun>(StringHelper.NameFiles.GunData);
+			SuspensionsData = new RepositoryTable<Suspension>(StringHelper.NameFiles.SuspensionData);
+			BodyMachinesData = new RepositoryTable<BodyMachine>(StringHelper.NameFiles.BodyMachineData);
+			SavedUserData = new RepositoryTable<UserData>(StringHelper.NameFiles.SavedUserData);
+
+			if (GunData.TableData.Count == 0)
 			{
-				return DataCollection[path];
+				InsertTestData.AddGunData(this);
 			}
 
-			AddData(path);
-
-			if (DataCollection.Keys.Any(e => e == path))
+			if (SuspensionsData.TableData.Count == 0)
 			{
-				return DataCollection[path];
+				InsertTestData.AddSuspensionsData(this);
 			}
 
-			return null;
-		}
-
-		public static void AddData(string path)
-		{
-			if (DataCollection.Keys.Any(e => e == path))
+			if (BodyMachinesData.TableData.Count == 0)
 			{
-				return;
-			}
-
-			try
-			{
-				DataCollection.Add(path, new RepositoryTable<T>(path));
-			}
-			catch
-			{
-				// ignored
+				InsertTestData.AddBodyMachinesData(this);
 			}
 		}
 	}

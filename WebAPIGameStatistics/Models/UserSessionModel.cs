@@ -25,7 +25,9 @@ namespace WebAPIGameStatistics.Models
 		/// <returns>Список.</returns>
 		public IEnumerable<string> GetUsers()
 		{
-			return _repository.TableData.Select(e => e.UserName);
+			return _repository
+				.TableData
+				.Select(e => e.UserName);
 		}
 
 		/// <summary>
@@ -34,7 +36,8 @@ namespace WebAPIGameStatistics.Models
 		/// <param name="userName">Имя пользователя.</param>
 		public bool CheckUserInDatabase(string userName)
 		{
-			return _repository.TableData
+			return _repository
+				.TableData
 				.Any(s => s.UserName == userName);
 		}
 
@@ -69,7 +72,8 @@ namespace WebAPIGameStatistics.Models
 		/// <param name="machineName">Новое имя машины.</param>
 		public bool SetNewNameMachine(string userName, string machineName)
 		{
-			var userData = _repository.TableData
+			var userData = _repository
+				.TableData
 				.FirstOrDefault(ud => ud.UserName == userName);
 
 			if (userData == null)

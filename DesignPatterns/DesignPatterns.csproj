@@ -58,7 +58,7 @@
     <Compile Include="AbstractFactoryPattern\Machines\Factories\MachineFactory.cs" />
     <Compile Include="AbstractFactoryPattern\Machines\UserMachine.cs" />
     <Compile Include="AbstractFactoryPattern\Machines\Enums\ModeMotionSuspension.cs" />
-    <Compile Include="AbstractFactoryPattern\Machines\BaseClasses\Machne.cs" />
+    <Compile Include="AbstractFactoryPattern\Machines\BaseClasses\Machine.cs" />
     <Compile Include="AbstractFactoryPattern\Machines\BaseClasses\BodyMachine.cs" />
     <Compile Include="AbstractFactoryPattern\Machines\BaseClasses\Suspension.cs" />
     <Compile Include="AbstractFactoryPattern\StaticObject\Enums\StaticObjectType.cs" />

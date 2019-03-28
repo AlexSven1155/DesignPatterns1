@@ -34,7 +34,7 @@ System.register("components/Hello", ["vue"], function (exports_1, context_1) {
         }
     };
 });
-System.register("components/AppHello", ["vue", "components/Hello"], function (exports_2, context_2) {
+System.register("components/MainTemplate", ["vue", "components/Hello"], function (exports_2, context_2) {
     "use strict";
     var vue_2, Hello_1;
     var __moduleName = context_2 && context_2.id;
@@ -49,7 +49,7 @@ System.register("components/AppHello", ["vue", "components/Hello"], function (ex
         ],
         execute: function () {
             exports_2("default", vue_2.default.extend({
-                template: '#app-hello-template',
+                template: '#main-template',
                 data: function () {
                     return {
                         name: "World"
@@ -62,17 +62,17 @@ System.register("components/AppHello", ["vue", "components/Hello"], function (ex
         }
     };
 });
-System.register("index", ["vue", "components/AppHello"], function (exports_3, context_3) {
+System.register("index", ["vue", "components/MainTemplate"], function (exports_3, context_3) {
     "use strict";
-    var vue_3, AppHello_1, v;
+    var vue_3, MainTemplate_1, v;
     var __moduleName = context_3 && context_3.id;
     return {
         setters: [
             function (vue_3_1) {
                 vue_3 = vue_3_1;
             },
-            function (AppHello_1_1) {
-                AppHello_1 = AppHello_1_1;
+            function (MainTemplate_1_1) {
+                MainTemplate_1 = MainTemplate_1_1;
             }
         ],
         execute: function () {
@@ -81,7 +81,7 @@ System.register("index", ["vue", "components/AppHello"], function (exports_3, co
                 template: '<AppHelloComponent />',
                 //render: h => h(AppHelloComponent),
                 components: {
-                    AppHelloComponent: AppHello_1.default
+                    MainTemplateComponent: MainTemplate_1.default
                 }
             });
         }

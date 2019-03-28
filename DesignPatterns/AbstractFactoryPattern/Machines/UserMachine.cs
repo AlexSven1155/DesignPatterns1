@@ -139,7 +139,7 @@ namespace DesignPatterns.AbstractFactoryPattern.Machines
 
 			while (distance > 0)
 			{
-				if ((base.Move(1) == 0))
+				if (base.Move(1) == 0)
 				{
 					distance--;
 

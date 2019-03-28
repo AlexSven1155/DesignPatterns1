@@ -1,19 +1,15 @@
 namespace DesignPatterns.AbstractFactoryPattern.Machines.BaseClasses
 {
-	using System;
 	using Interfaces;
+	using System;
 
 	/// <summary>
 	/// Базовая машина.
 	/// </summary>
 	public abstract class Machine : IBaseMachine
 	{
-		private object _obj = new object();
-
 		private int _armorResistance;
-
 		private int _maxArmorPoints;
-
 		private int _maxLifePoints;
 
 		/// <summary>
@@ -140,11 +136,7 @@ namespace DesignPatterns.AbstractFactoryPattern.Machines.BaseClasses
 		/// <returns>Урон.</returns>
 		public int Shoot()
 		{
-			lock (_obj)
-			{
-				Console.WriteLine(Name);
-				return Gun.Shoot();
-			}
+			return Gun.Shoot();
 		}
 
 		/// <summary>

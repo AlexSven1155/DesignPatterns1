@@ -10,7 +10,7 @@ namespace DesignPatterns.AbstractFactoryPattern.Machines.BaseClasses
 	/// Базовый кузов машины.
 	/// </summary>
 	[Serializable]
-	public class BodyMachine : IBaseMachinePart, ISerializable
+	public class BodyMachine : IBaseMachinePart, ISerializable, IEquatable<BodyMachine>
 	{
 		/// <summary>
 		/// Базовый конструктор.
@@ -122,6 +122,11 @@ namespace DesignPatterns.AbstractFactoryPattern.Machines.BaseClasses
 				   $"Уровень: {Level}{Environment.NewLine}" +
 				   $"Защита брони: {ArmorResistance}{Environment.NewLine}" +
 				   $"Размер инвентаря: {SizeInventory}";
+		}
+
+		public bool Equals(BodyMachine other)
+		{
+			return Name == other?.Name;
 		}
 	}
 }

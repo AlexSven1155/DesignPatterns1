@@ -13,9 +13,7 @@ namespace DesignPatterns.AbstractFactoryPattern.Machines.Factories
 	{
 		private readonly int _level;
 		private readonly Random _random = new Random();
-		private readonly IRepositoryTable<Gun> _gunData = Repository<Gun>.GetTable(StringHelper.NameFiles.GunData);
-		private readonly IRepositoryTable<Suspension> _suspensionsData = Repository<Suspension>.GetTable(StringHelper.NameFiles.SuspensionData);
-		private readonly IRepositoryTable<BodyMachine> _bodyMachinesData = Repository<BodyMachine>.GetTable(StringHelper.NameFiles.BodyMachineData);
+		private readonly Repository _repository = new Repository();
 
 		/// <summary>
 		/// Задать уровень машины для производства.
@@ -34,7 +32,7 @@ namespace DesignPatterns.AbstractFactoryPattern.Machines.Factories
 		/// <returns>Оружие.</returns>
 		public Gun CreateGun()
 		{
-			var result = (from gun in _gunData.TableData
+			var result = (from gun in _repository.GunData.TableData
 						  where gun.Level == _level
 						  select gun).ToList();
 			var gunData = result[_random.Next(0, result.Count)];
@@ -50,7 +48,7 @@ namespace DesignPatterns.AbstractFactoryPattern.Machines.Factories
 		/// <returns>Лёгкая подвеска.</returns>
 		public Suspension CreateSuspension()
 		{
-			var result = (from suspension in _suspensionsData.TableData
+			var result = (from suspension in _repository.SuspensionsData.TableData
 						  where suspension.Level == _level
 						  select suspension).ToList();
 			var suspensionData = result[_random.Next(0, result.Count)];
@@ -71,7 +69,7 @@ namespace DesignPatterns.AbstractFactoryPattern.Machines.Factories
 		/// <returns>Кузов от легковушки.</returns>
 		public BodyMachine CreateBody()
 		{
-			var result = (from body in _bodyMachinesData.TableData
+			var result = (from body in _repository.BodyMachinesData.TableData
 						  where body.Level == _level
 						  select body).ToList();
 			var bodyData = result[_random.Next(0, result.Count)];

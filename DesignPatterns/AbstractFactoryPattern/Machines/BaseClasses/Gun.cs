@@ -8,7 +8,7 @@ namespace DesignPatterns.AbstractFactoryPattern.Machines.BaseClasses
 	/// Базовый класс оружия.
 	/// </summary>
 	[Serializable]
-	public class Gun : IBaseGun, ISerializable
+	public class Gun : IBaseGun, ISerializable, IEquatable<Gun>
 	{
 		Random _random = new Random();
 
@@ -99,6 +99,11 @@ namespace DesignPatterns.AbstractFactoryPattern.Machines.BaseClasses
 				   $"Мин урон: {MinDamage}{Environment.NewLine}" +
 				   $"Макс урон: {MaxDamage}{Environment.NewLine}" +
 				   $"Уровень: {Level}";
+		}
+
+		public bool Equals(Gun other)
+		{
+			return Name == other?.Name;
 		}
 	}
 }

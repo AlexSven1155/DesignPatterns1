@@ -18,12 +18,12 @@ namespace DesignPatterns.UserContext
 		/// <summary>
 		/// Данные игрока.
 		/// </summary>
-		public UserData UserData { get; }
+		public UserData UserData { get; private set; }
 
 		/// <summary>
 		/// Ссылка на репозиторий с данными.
 		/// </summary>
-		private readonly IRepositoryTable<UserData> _repository = Repository<UserData>.GetTable(StringHelper.NameFiles.SavedUserData);
+		private readonly Repository _repository = new Repository();
 
 		/// <summary>
 		/// Создать сессию используя имя.
@@ -80,7 +80,7 @@ namespace DesignPatterns.UserContext
 		/// </summary>
 		public void SaveGame()
 		{
-			_repository.AddData(UserData);
+			_repository.SavedUserData.AddData(UserData);
 		}
 
 		/// <summary>
@@ -89,7 +89,9 @@ namespace DesignPatterns.UserContext
 		/// <returns>Успешность операции.</returns>
 		public bool LoadGame()
 		{
-			var userData = _repository.TableData
+			var userData = _repository
+				.SavedUserData
+				.TableData
 				.FirstOrDefault(ud => ud.UserName == UserData.UserName);
 
 			if (userData == null)
@@ -97,8 +99,7 @@ namespace DesignPatterns.UserContext
 				return false;
 			}
 
-			UserData.UserMachine = userData.UserMachine;
-			UserData.UserStatistics = userData.UserStatistics;
+			UserData = userData;
 
 			return true;
 		}

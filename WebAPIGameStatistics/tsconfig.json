@@ -11,6 +11,6 @@
 		"esModuleInterop": true
 	},
 	"include": [
-		"./ClientApp/**/*.ts"
+		"./ClientApp/**/*.ts", "../DesignPatterns/AbstractFactoryPattern/Machines/BaseClasses/Machine.cs"
 	]
 }

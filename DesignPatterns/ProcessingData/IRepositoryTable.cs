@@ -1,13 +1,16 @@
-using System.Collections.Generic;
-using System.Runtime.Serialization;
-
 namespace DesignPatterns.ProcessingData
 {
+	using System.Collections.Generic;
+	using System.Runtime.Serialization;
+
 	/// <summary>
 	/// Интефейс для работы с таблицей данных.
 	/// </summary>
 	public interface IRepositoryTable<T> where T : ISerializable
 	{
+		/// <summary>
+		/// Таблица с даннными.
+		/// </summary>
 		List<T> TableData { get; }
 
 		/// <summary>

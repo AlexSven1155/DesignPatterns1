@@ -9,13 +9,13 @@ namespace DesignPatterns.AbstractFactoryPattern.Machines.BaseClasses
 	/// Базовая подвеска машины.
 	/// </summary>
 	[Serializable]
-	public class Suspension : IBaseMachinePart, ISerializable
+	public class Suspension : IBaseMachinePart, ISerializable, IEquatable<Suspension>
 	{
 		public Suspension(string name,
 			int level,
 			int maxLifePoints,
 			int maxArmorPoints,
-			int armorResistance, 
+			int armorResistance,
 			int enginePower,
 			int capacityFuelTank,
 			int fuelConsumption,
@@ -168,9 +168,21 @@ namespace DesignPatterns.AbstractFactoryPattern.Machines.BaseClasses
 
 		public override string ToString()
 		{
-			return $"Название: {Name}\nМакс хп: {MaxLifePoints}\nМакс брони: {MaxArmorPoints}\nУровень: {Level}" +
-			       $"\nЗащита брони: {ArmorResistance}\nМакс скорость: {MaxSpeed}\nМощность двигателя: {EnginePower}" +
-			       $"\nОбъём бака: {CapacityFuelTank}\nРасход: {FuelConsumption}\nТип подвески: {ModeMotion.ToString()}";
+			return $"Название: {Name}\n" +
+				   $"Макс хп: {MaxLifePoints}\n" +
+				   $"Макс брони: {MaxArmorPoints}\n" +
+				   $"Уровень: {Level}\n" +
+				   $"Защита брони: {ArmorResistance}\n" +
+				   $"Макс скорость: {MaxSpeed}\n" +
+				   $"Мощность двигателя: {EnginePower}\n" +
+				   $"Объём бака: {CapacityFuelTank}\n" +
+				   $"Расход: {FuelConsumption}\n" +
+				   $"Тип подвески: {ModeMotion.ToString()}";
+		}
+
+		public bool Equals(Suspension other)
+		{
+			return Name == other?.Name;
 		}
 	}
 }

@@ -1,0 +1,13 @@
+﻿<h2>@ViewBag.Title</h2>
+@{
+	if (ViewBag.UserStatistic != null)
+	{
+		<label>Имя: @ViewBag.UserName</label><br />
+		<label>Убито врагов: @ViewBag.UserStatistic.EnemyKill</label><br />
+		<label>Пройдено километров: @ViewBag.UserStatistic.KilometersCovered</label><br />
+		<label>Количество смертей: @ViewBag.UserStatistic.NumberOfDeaths</label><br />
+		<label>Найдено предметов: @ViewBag.UserStatistic.ReceivedItems</label><br />
+		<label>Использовано предметов: @ViewBag.UserStatistic.UsedItems</label><br />
+	}
+}
+

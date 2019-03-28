@@ -1,0 +1,11 @@
+﻿@{
+	<h2>@ViewBag.Title</h2>
+	if (ViewBag.UserMachine != null)
+	{
+		<label>Машина - @ViewBag.UserMachine.Name</label><br />
+		<label>Очков жизней: @ViewBag.UserMachine.LifePoints</label><br />
+		<label>Очков брони: @ViewBag.UserMachine.ArmorPoints</label><br />
+		<label>Степень защиты брони: @ViewBag.UserMachine.ArmorResistance%</label><br />
+		<label>Уровень: @ViewBag.UserMachine.Level</label><br />
+	}
+}

@@ -1,0 +1,52 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27428.2043
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DesignPatterns", "DesignPatterns\DesignPatterns.csproj", "{465618D8-920E-480E-85F4-5CFA24D45275}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebAPIGameStatistics", "WebAPIGameStatistics\WebAPIGameStatistics.csproj", "{CAB43CD0-5551-4B05-B2E2-DDC6832343A6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApiTest", "WebApiTest\WebApiTest.csproj", "{FA5A0FA0-756E-4DC5-80A9-CA5F3E0DC101}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{465618D8-920E-480E-85F4-5CFA24D45275}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{465618D8-920E-480E-85F4-5CFA24D45275}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{465618D8-920E-480E-85F4-5CFA24D45275}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{465618D8-920E-480E-85F4-5CFA24D45275}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CAB43CD0-5551-4B05-B2E2-DDC6832343A6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CAB43CD0-5551-4B05-B2E2-DDC6832343A6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CAB43CD0-5551-4B05-B2E2-DDC6832343A6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CAB43CD0-5551-4B05-B2E2-DDC6832343A6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FA5A0FA0-756E-4DC5-80A9-CA5F3E0DC101}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FA5A0FA0-756E-4DC5-80A9-CA5F3E0DC101}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FA5A0FA0-756E-4DC5-80A9-CA5F3E0DC101}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FA5A0FA0-756E-4DC5-80A9-CA5F3E0DC101}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {0FAB5F90-B629-458A-82FA-F692E795C628}
+	EndGlobalSection
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 4
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = https://tfs.norbit.ru/defaultcollection
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = DesignPatterns\\DesignPatterns.csproj
+		SccProjectName1 = DesignPatterns
+		SccLocalPath1 = DesignPatterns
+		SccProjectUniqueName2 = WebAPIGameStatistics\\WebAPIGameStatistics.csproj
+		SccProjectName2 = WebAPIGameStatistics
+		SccLocalPath2 = WebAPIGameStatistics
+		SccProjectUniqueName3 = WebApiTest\\WebApiTest.csproj
+		SccProjectName3 = WebApiTest
+		SccLocalPath3 = WebApiTest
+	EndGlobalSection
+EndGlobal

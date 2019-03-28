@@ -1,0 +1,13 @@
+<template id="hello-template">
+	<div>
+		<div class="greeting">Hello {{name}}{{exclamationMarks}}</div>
+		<button @click="decrement">-</button>
+		<button @click="increment">+</button>
+	</div>
+</template>
+<template id="main-template">
+	<div class ="huy">
+		Name: <input v-model="name" type="text" />
+		<hello-component :name="name" :initial-enthusiasm="5" />
+	</div>
+</template>

@@ -1,0 +1,92 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{465618D8-920E-480E-85F4-5CFA24D45275}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>DesignPatterns</RootNamespace>
+    <AssemblyName>DesignPatterns</AssemblyName>
+    <TargetFrameworkVersion>v4.6.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="InsertTestData.cs" />
+    <Compile Include="ProcessingData\Repository.cs" />
+    <Compile Include="AbstractFactoryPattern\Machines\BaseClasses\Gun.cs" />
+    <Compile Include="AbstractFactoryPattern\Machines\EnemyMachine.cs" />
+    <Compile Include="AbstractFactoryPattern\Machines\Interfaces\IBaseGun.cs" />
+    <Compile Include="AbstractFactoryPattern\Machines\Interfaces\IBaseMachine.cs" />
+    <Compile Include="AbstractFactoryPattern\Machines\Interfaces\IBasicMachineFactory.cs" />
+    <Compile Include="AbstractFactoryPattern\Machines\Interfaces\IBaseMachinePart.cs" />
+    <Compile Include="AbstractFactoryPattern\Machines\Factories\MachineFactory.cs" />
+    <Compile Include="AbstractFactoryPattern\Machines\UserMachine.cs" />
+    <Compile Include="AbstractFactoryPattern\Machines\Enums\ModeMotionSuspension.cs" />
+    <Compile Include="AbstractFactoryPattern\Machines\BaseClasses\Machne.cs" />
+    <Compile Include="AbstractFactoryPattern\Machines\BaseClasses\BodyMachine.cs" />
+    <Compile Include="AbstractFactoryPattern\Machines\BaseClasses\Suspension.cs" />
+    <Compile Include="AbstractFactoryPattern\StaticObject\Enums\StaticObjectType.cs" />
+    <Compile Include="AbstractFactoryPattern\StaticObject\Factories\СanisterFactory.cs" />
+    <Compile Include="AbstractFactoryPattern\StaticObject\Factories\ScrapMetalFactory.cs" />
+    <Compile Include="AbstractFactoryPattern\StaticObject\Factories\RepairPartsFactory.cs" />
+    <Compile Include="AbstractFactoryPattern\StaticObject\Interfaces\IBaseStaticObject.cs" />
+    <Compile Include="AbstractFactoryPattern\StaticObject\Interfaces\IBaseStaticObjectFactory.cs" />
+    <Compile Include="AbstractFactoryPattern\StaticObject\RepairParts.cs" />
+    <Compile Include="AbstractFactoryPattern\StaticObject\ScrapMetal.cs" />
+    <Compile Include="AbstractFactoryPattern\StaticObject\Canister.cs" />
+    <Compile Include="AbstractFactoryPattern\StaticObject\BaseClasses\BaseStaticObject.cs" />
+    <Compile Include="ProcessingData\RepositoryTable.cs" />
+    <Compile Include="ProcessingData\IRepositoryTable.cs" />
+    <Compile Include="UserContext\UserStatistics.cs" />
+    <Compile Include="StringHelper.cs" />
+    <Compile Include="MediatorPattern\MachineIntermediary.cs" />
+    <Compile Include="ObserverPattern\Delegates\Deligates.cs" />
+    <Compile Include="ObserverPattern\SpawnOnMove\Spawner.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ProcessingData\Serializer.cs" />
+    <Compile Include="UserContext\UserData.cs" />
+    <Compile Include="UserContext\UserSession.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

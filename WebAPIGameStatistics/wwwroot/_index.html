@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>WebAPIGameStatistics</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+	<script src="http://code.jquery.com/jquery-1.8.3.js"></script>
+</head>
+<body>
+	<h2 align="center">CHOOSE YOUR USER</h2>
+	<div class="container">
+		<div align="center" class="userList">
+			<ul class="list-group">
+				<li class="list-group-item" v-for="user in users">
+					<button class="btn btn-success" v-on:click="logIn(user)">{{ user }}</button>
+				</li>
+			</ul>
+		</div>
+		<div class="userStatistic">
+
+		</div>
+	</div>
+	<script type="text/javascript">
+		var vue = new Vue({
+			el: '.userList',
+			data: {
+				users: []
+			},
+			methods: {
+				getStatistic: function (user) {
+					$.ajax({
+						type: 'POST',
+						accepts: "application/json",
+						url: 'api/userData/GetUserStatistic',
+						contentType: "application/json",
+						dataType: 'json',
+						data: JSON.stringify(user),
+						success: function (responseData) {
+							alert(responseData);
+						},
+						error: function (a, b, c) {
+							alert(a + '\n' + b + '\n' + c);
+						}
+					});
+				},
+				
+				logIn: function(user) {
+					$.ajax({
+						type: 'POST',
+						accepts: "application/json",
+						url: 'api/authorization',
+						contentType: 'application/json',
+						dataType: 'json',
+						data: JSON.stringify(user),
+						context: this,
+						success: function (responseData) {
+							if (responseData) {
+								this.getStatistic(user);
+							} else {
+								alert(responseData);
+							}
+						},
+						error: function (a, b, c) {
+							alert(a + '\n' + b + '\n' + c);
+						}
+					});
+				}
+			}
+		});
+		$(document).ready(function () {
+			$.ajax({
+				url: 'api/authorization',
+				type: 'GET',
+				contentType: "application/json;charset=utf-8",
+				success: function (responseData) {
+					vue.users = responseData;
+				},
+				error: function (a, b, c) {
+					alert(a + '\n' + b + '\n' + 'c');
+				}
+			});
+		});
+	</script>
+</body>
+</html>

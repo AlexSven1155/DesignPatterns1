@@ -1,11 +1,11 @@
 import Vue from "vue";
-import MainTemplateComponent from "./components/MainTemplate";
+import AuthorizationComponent from "./components/AuthorizationVue/Authorization";
 
 let v = new Vue({
 	el: "#app-root",
-	template: '<AppHelloComponent />',
-	//render: h => h(AppHelloComponent),
+	template: '<AuthorizationComponent />',
 	components: {
-		MainTemplateComponent
+		//MainTemplateComponent,
+		AuthorizationComponent
 	}
 });

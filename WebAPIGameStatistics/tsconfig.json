@@ -5,12 +5,13 @@
 		"removeComments": false,
 		"sourceMap": true,
 		"target": "es5",
+		"strict": true,
 		"module": "system",
 		"outFile": "wwwroot/dist/app-bandle.js",
 		"moduleResolution": "node",
 		"esModuleInterop": true
 	},
 	"include": [
-		"./ClientApp/**/*.ts", "../DesignPatterns/AbstractFactoryPattern/Machines/BaseClasses/Machine.cs"
+		"./ClientApp/**/*.ts"
 	]
 }

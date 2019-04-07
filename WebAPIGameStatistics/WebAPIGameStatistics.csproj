@@ -16,6 +16,7 @@
     <PackageReference Include="Microsoft.AspNetCore.App" Version="2.1.4" />
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.1.1" />
     <PackageReference Include="Ninject" Version="3.3.4" />
+    <PackageReference Include="Node.js" Version="5.3.0" />
   </ItemGroup>
 
   <ItemGroup>
@@ -24,9 +25,6 @@
 
   <ItemGroup>
     <Content Update="wwwroot\index.html">
-      <Pack>$(IncludeRazorContentInPack)</Pack>
-    </Content>
-    <Content Update="wwwroot\_index.html">
       <Pack>$(IncludeRazorContentInPack)</Pack>
     </Content>
   </ItemGroup>

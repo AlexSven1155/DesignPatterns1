@@ -4,15 +4,13 @@
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	<title>WebAPIGameStatistics</title>
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-	<script src="https://cdn.jsdelivr.net/npm/vue"></script>
-	<script src="http://code.jquery.com/jquery-1.8.3.js"></script>
+	<link rel="stylesheet" href="dist/bootstrap.css" type="text/css" />
 </head>
 <body>
 	<section id="app-templates"></section>
 	<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 	<script>
-		$.get("dist/app-templates.html").done(function (data) {
+		$.get("dist/app-templates.min.html").done(function (data) {
 			$('#app-templates').append(data);
 		});
 	</script>
@@ -23,10 +21,11 @@
 	<script>
 		System.config({
 			map: {
-				"vue": "https://cdn.jsdelivr.net/npm/vue@2.5.13/dist/vue.js"
+				"vue": "dist/vue.min.js",
+				"jquery": "https://code.jquery.com/jquery-3.2.1.min.js"
 			}
 		});
-		SystemJS.import('dist/app-bandle.js').then(function (m) {
+		SystemJS.import('dist/app-bandle.min.js').then(function (m) {
 			SystemJS.import('index');
 		});
 	</script>

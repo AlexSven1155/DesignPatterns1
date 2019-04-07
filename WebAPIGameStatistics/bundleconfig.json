@@ -1,54 +1,11 @@
 [
 	{
-		"outputFileName": "wwwroot/dist/vendor1.js",
-		"inputFiles": [
-			"node_modules/jquery/dist/jquery.js",
-			"node_modules/popper.js/dist/umd/popper.js",
-			"node_modules/bootstrap/dist/js/bootstrap.js",
-			"node_modules/systemjs/dist/system.src.js"
-		],
-		"minify": {
-			"enabled": true,
-			"renameLocals": true
-		},
-		"sourceMap": true
-	},
-	{
-		"outputFileName": "wwwroot/dist/vendor1.css",
-		"inputFiles": [
-			"node_modules/bootstrap/dist/css/bootstrap.css"
-		],
-		"minify": {
-			"enabled": false
-		}
-	},
-	{
-		"outputFileName": "wwwroot/dist/vendor1.min.css",
+		"outputFileName": "wwwroot/dist/bootstrap.css",
 		"inputFiles": [
 			"node_modules/bootstrap/dist/css/bootstrap.min.css"
 		],
 		"minify": {
 			"enabled": false
-		}
-	},
-	{
-		"outputFileName": "wwwroot/dist/vendor2.js",
-		"inputFiles": [
-			"node_modules/vue/dist/vue.js"
-		],
-		"minify": {
-			"enabled": true,
-			"renameLocals": true
-		},
-		"sourceMap": true
-	},
-	{
-		"outputFileName": "wwwroot/dist/main.css",
-		"inputFiles": [
-			"ClientApp/**/*.css"
-		],
-		"minify": {
-			"enabled": true
 		}
 	},
 	{
@@ -62,13 +19,24 @@
 		}
 	},
 	{
+		"outputFileName": "wwwroot/dist/vue.min.js",
+		"inputFiles": [
+			"node_modules/vue/dist/vue.js"
+		],
+		"minify": {
+			"enabled": true,
+			"renameLocals": true
+		},
+		"sourceMap": true
+	},
+	{
 		"outputFileName": "wwwroot/dist/app-templates.html",
 		"inputFiles": [
 			"ClientApp/**/*.html"
 		],
 		"minify": {
-			"enabled": false,
-			"renameLocals": false
+			"enabled": true,
+			"renameLocals": true
 		}
 	}
 ]

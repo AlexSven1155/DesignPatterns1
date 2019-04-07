@@ -1,89 +1,129 @@
-System.register("components/Hello", ["vue"], function (exports_1, context_1) {
+System.register("components/AuthorizationVue/Authorization", ["vue", "jquery"], function (exports_1, context_1) {
     "use strict";
-    var vue_1;
+    var vue_1, jquery_1;
     var __moduleName = context_1 && context_1.id;
     return {
         setters: [
             function (vue_1_1) {
                 vue_1 = vue_1_1;
+            },
+            function (jquery_1_1) {
+                jquery_1 = jquery_1_1;
             }
         ],
         execute: function () {
             exports_1("default", vue_1.default.extend({
-                template: '#hello-template',
-                props: ['name', 'initialEnthusiasm'],
+                template: '#authorizationVue',
                 data: function () {
                     return {
-                        enthusiasm: this.initialEnthusiasm
+                        users: []
                     };
                 },
-                methods: {
-                    increment: function () { this.enthusiasm++; },
-                    decrement: function () {
-                        if (this.enthusiasm > 1) {
-                            this.enthusiasm--;
+                created: function () {
+                    var scope = this;
+                    jquery_1.default.ajax({
+                        url: 'api/authorization',
+                        type: 'GET',
+                        contentType: "application/json;charset=utf-8",
+                        success: function (responseData) {
+                            scope.users = responseData;
+                        },
+                        error: function (a, b, c) {
+                            alert(a + '\n' + b + '\n' + c);
                         }
-                    },
+                    });
                 },
-                computed: {
-                    exclamationMarks: function () {
-                        return Array(this.enthusiasm + 1).join('!');
-                    }
+                methods: {
+                    logIn: function (user) {
+                        var scope = this;
+                        jquery_1.default.ajax({
+                            type: 'POST',
+                            accepts: "application/json",
+                            url: 'api/authorization',
+                            contentType: 'application/json',
+                            dataType: 'json',
+                            data: JSON.stringify(user),
+                            context: this,
+                            success: function (responseData) {
+                                if (responseData) {
+                                    scope.getStatistic(user);
+                                }
+                                else {
+                                    alert(responseData);
+                                }
+                            },
+                            error: function (a, b, c) {
+                                alert(a + '\n' + b + '\n' + c);
+                            }
+                        });
+                    },
+                    getStatistic: function (user) {
+                        jquery_1.default.ajax({
+                            type: 'POST',
+                            accepts: "application/json",
+                            url: 'api/userData/GetUserStatistic',
+                            contentType: "application/json",
+                            dataType: 'json',
+                            data: JSON.stringify(user),
+                            success: function (responseData) {
+                                if (responseData &&
+                                    responseData.kilometersCovered &&
+                                    responseData.kilometersCovered > 0) {
+                                    alert(responseData.kilometersCovered);
+                                }
+                                else {
+                                    alert(responseData);
+                                }
+                            },
+                            error: function (a, b, c) {
+                                alert(a + '\n' + b + '\n' + c);
+                            }
+                        });
+                    },
                 }
             }));
         }
     };
 });
-System.register("components/MainTemplate", ["vue", "components/Hello"], function (exports_2, context_2) {
+System.register("index", ["vue", "components/AuthorizationVue/Authorization"], function (exports_2, context_2) {
     "use strict";
-    var vue_2, Hello_1;
+    var vue_2, Authorization_1, v;
     var __moduleName = context_2 && context_2.id;
     return {
         setters: [
             function (vue_2_1) {
                 vue_2 = vue_2_1;
             },
-            function (Hello_1_1) {
-                Hello_1 = Hello_1_1;
+            function (Authorization_1_1) {
+                Authorization_1 = Authorization_1_1;
             }
         ],
         execute: function () {
-            exports_2("default", vue_2.default.extend({
-                template: '#main-template',
-                data: function () {
-                    return {
-                        name: "World"
-                    };
-                },
+            v = new vue_2.default({
+                el: "#app-root",
+                template: '<AuthorizationComponent />',
                 components: {
-                    HelloComponent: Hello_1.default
+                    //MainTemplateComponent,
+                    AuthorizationComponent: Authorization_1.default
                 }
-            }));
+            });
         }
     };
 });
-System.register("index", ["vue", "components/MainTemplate"], function (exports_3, context_3) {
+System.register("components/MainTemplate", ["vue"], function (exports_3, context_3) {
     "use strict";
-    var vue_3, MainTemplate_1, v;
+    var vue_3;
     var __moduleName = context_3 && context_3.id;
     return {
         setters: [
             function (vue_3_1) {
                 vue_3 = vue_3_1;
-            },
-            function (MainTemplate_1_1) {
-                MainTemplate_1 = MainTemplate_1_1;
             }
         ],
         execute: function () {
-            v = new vue_3.default({
-                el: "#app-root",
-                template: '<AppHelloComponent />',
-                //render: h => h(AppHelloComponent),
-                components: {
-                    MainTemplateComponent: MainTemplate_1.default
-                }
-            });
+            exports_3("default", vue_3.default.extend({
+                template: "#main-template",
+            }));
         }
     };
 });

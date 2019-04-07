@@ -1,0 +1,8 @@
+<template id="main">
+	<div v-if="!isLoggedIn">
+		<div is="authorization-comp"></div>
+	</div>
+	<div v-if="isLoggedIn">
+		<div is="statistic-comp"></div>
+	</div>
+</template>

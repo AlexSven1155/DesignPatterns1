@@ -1,6 +1,6 @@
-<template id="authorizationVue" v-on:load="getUserList()">
-	<div>
-		<div class="list-group-item">CHECK</div>
+<template id="authorizationVue">
+	<div id="authorization">
+		<div class="list-group-item">CHOSE YOU USER</div>
 		<li class="list-group-item" v-for="user in users">
 			<button class="btn btn-success" v-on:click="logIn(user)">{{user}}</button>
 		</li>

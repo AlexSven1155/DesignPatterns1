@@ -4,7 +4,7 @@
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	<title>WebAPIGameStatistics</title>
-	<link rel="stylesheet" href="dist/bootstrap.css" type="text/css" />
+	<link rel="stylesheet" href="dist/styles.min.css" type="text/css" />
 </head>
 <body>
 	<section id="app-templates"></section>
@@ -16,7 +16,7 @@
 	<script src="dist/system.js"></script>
 	<script>
 		System.config({ map: { "vue": "dist/vue.min.js", "jquery": "dist/jquery.min.js" } });
-		SystemJS.import('dist/app-bandle.min.js').then(function (m) { SystemJS.import('index'); });
+		SystemJS.import('dist/app-bandle.min.js').then(function (m) { SystemJS.import('main'); });
 	</script>
 </body>
 </html>

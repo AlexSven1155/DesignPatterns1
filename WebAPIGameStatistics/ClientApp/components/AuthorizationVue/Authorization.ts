@@ -24,7 +24,6 @@ export default Vue.extend({
 	},
 	methods: {
 		logIn(user) {
-			var scope = this;
 			$.ajax({
 				type: 'POST',
 				accepts: "application/json",
@@ -35,7 +34,7 @@ export default Vue.extend({
 				context: this,
 				success(responseData) {
 					if (responseData) {
-						scope.getStatistic(user);
+						alert("OK");
 					} else {
 						alert(responseData);
 					}
@@ -44,28 +43,6 @@ export default Vue.extend({
 					alert(a + '\n' + b + '\n' + c);
 				}
 			});
-		},
-		getStatistic(user) {
-			$.ajax({
-				type: 'POST',
-				accepts: "application/json",
-				url: 'api/userData/GetUserStatistic',
-				contentType: "application/json",
-				dataType: 'json',
-				data: JSON.stringify(user),
-				success(responseData) {
-					if (responseData &&
-						responseData.kilometersCovered &&
-						responseData.kilometersCovered > 0) {
-						alert(responseData.kilometersCovered);
-					} else {
-						alert(responseData);
-					}
-				},
-				error(a, b, c) {
-					alert(a + '\n' + b + '\n' + c);
-				}
-			});
-		},
+		}
 	}
 });

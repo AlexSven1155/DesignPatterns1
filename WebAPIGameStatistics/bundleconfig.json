@@ -1,11 +1,12 @@
 [
 	{
-		"outputFileName": "wwwroot/dist/bootstrap.css",
+		"outputFileName": "wwwroot/dist/styles.css",
 		"inputFiles": [
-			"node_modules/bootstrap/dist/css/bootstrap.min.css"
+			"node_modules/bootstrap/dist/css/bootstrap.css",
+			"ClientApp/**/*.css"
 		],
 		"minify": {
-			"enabled": false
+			"enabled": true
 		}
 	},
 	{

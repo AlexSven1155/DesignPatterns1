@@ -1,8 +1,20 @@
-<template id="authorizationVue" v-on:load="getUserList()">
-	<div>
-		<div class="list-group-item">CHECK</div>
+<template id="main">
+	<div v-if="!isLoggedIn">
+		<div is="authorization-comp"></div>
+	</div>
+	<div v-if="isLoggedIn">
+		<div is="statistic-comp"></div>
+	</div>
+</template>
+<template id="authorizationVue">
+	<div id="authorization">
+		<div class="list-group-item">CHOSE YOU USER</div>
 		<li class="list-group-item" v-for="user in users">
 			<button class="btn btn-success" v-on:click="logIn(user)">{{user}}</button>
 		</li>
 	</div>
+</template>
+<template id="statistic">
+	<label>ТЫ{{userName}}</label>
+	<button class="btn btn-success" v-on:click="getStatistic()">Статистика</button>
 </template>

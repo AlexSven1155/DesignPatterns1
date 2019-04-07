@@ -5,7 +5,6 @@ let v = new Vue({
 	el: "#app-root",
 	template: '<AuthorizationComponent />',
 	components: {
-		//MainTemplateComponent,
 		AuthorizationComponent
 	}
 });

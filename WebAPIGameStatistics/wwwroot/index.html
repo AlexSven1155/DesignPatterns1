@@ -8,26 +8,15 @@
 </head>
 <body>
 	<section id="app-templates"></section>
-	<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+	<script src="dist/jquery.min.js"></script>
 	<script>
-		$.get("dist/app-templates.min.html").done(function (data) {
-			$('#app-templates').append(data);
-		});
+		$.get("dist/app-templates.min.html").done(function (data) { $('#app-templates').append(data); });
 	</script>
-
 	<div id="app-root">loading..</div>
-
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/systemjs/0.20.19/system.src.js"></script>
+	<script src="dist/system.js"></script>
 	<script>
-		System.config({
-			map: {
-				"vue": "dist/vue.min.js",
-				"jquery": "https://code.jquery.com/jquery-3.2.1.min.js"
-			}
-		});
-		SystemJS.import('dist/app-bandle.min.js').then(function (m) {
-			SystemJS.import('index');
-		});
+		System.config({ map: { "vue": "dist/vue.min.js", "jquery": "dist/jquery.min.js" } });
+		SystemJS.import('dist/app-bandle.min.js').then(function (m) { SystemJS.import('index'); });
 	</script>
 </body>
 </html>

@@ -103,27 +103,9 @@ System.register("index", ["vue", "components/AuthorizationVue/Authorization"], f
                 el: "#app-root",
                 template: '<AuthorizationComponent />',
                 components: {
-                    //MainTemplateComponent,
                     AuthorizationComponent: Authorization_1.default
                 }
             });
-        }
-    };
-});
-System.register("components/MainTemplate", ["vue"], function (exports_3, context_3) {
-    "use strict";
-    var vue_3;
-    var __moduleName = context_3 && context_3.id;
-    return {
-        setters: [
-            function (vue_3_1) {
-                vue_3 = vue_3_1;
-            }
-        ],
-        execute: function () {
-            exports_3("default", vue_3.default.extend({
-                template: "#main-template",
-            }));
         }
     };
 });

@@ -21,11 +21,30 @@
 	{
 		"outputFileName": "wwwroot/dist/vue.min.js",
 		"inputFiles": [
-			"node_modules/vue/dist/vue.js"
+			"node_modules/vue/dist/vue.min.js"
 		],
 		"minify": {
-			"enabled": true,
-			"renameLocals": true
+			"enabled": false
+		},
+		"sourceMap": true
+	},
+	{
+		"outputFileName": "wwwroot/dist/system.js",
+		"inputFiles": [
+			"node_modules/systemjs/dist/system.js"
+		],
+		"minify": {
+			"enabled": false
+		},
+		"sourceMap": true
+	},
+	{
+		"outputFileName": "wwwroot/dist/jquery.min.js",
+		"inputFiles": [
+			"node_modules/jquery/dist/jquery.min.js"
+		],
+		"minify": {
+			"enabled": false
 		},
 		"sourceMap": true
 	},

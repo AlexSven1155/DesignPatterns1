@@ -1,8 +1,8 @@
 namespace DesignPatterns.UserContext
 {
+	using AbstractFactoryPattern.Machines;
 	using System;
 	using System.Runtime.Serialization;
-	using AbstractFactoryPattern.Machines;
 
 	/// <summary>
 	/// Класс данных пользователя.
@@ -13,25 +13,23 @@ namespace DesignPatterns.UserContext
 		/// <summary>
 		/// Имя игрока.
 		/// </summary>
-		public string UserName;
+		public string UserName { get; set; }
 
 		/// <summary>
 		/// Машина игрока.
 		/// </summary>
-		public UserMachine UserMachine;
+		public UserMachine UserMachine { get; set; }
 
 		/// <summary>
 		/// Статистика игрока.
 		/// </summary>
-		public UserStatistics UserStatistics;
+		public UserStatistics UserStatistics { get; set; }
 
 		public UserData() { }
 
 		/// <summary>
 		/// Реализация интерфейса "ISerializable"
 		/// </summary>
-		/// <param name="info"></param>
-		/// <param name="context"></param>
 		public void GetObjectData(SerializationInfo info, StreamingContext context)
 		{
 			info.AddValue("UserName", UserName);
@@ -42,8 +40,6 @@ namespace DesignPatterns.UserContext
 		/// <summary>
 		/// Реализация интерфейса "ISerializable"
 		/// </summary>
-		/// <param name="info"></param>
-		/// <param name="context"></param>
 		public UserData(SerializationInfo info, StreamingContext context)
 		{
 			UserName = (string)info.GetValue("UserName", typeof(string));
@@ -51,6 +47,11 @@ namespace DesignPatterns.UserContext
 			UserStatistics = (UserStatistics)info.GetValue("UserStatistics", typeof(UserStatistics));
 		}
 
+		/// <summary>
+		/// Реализация IEquatable.
+		/// </summary>
+		/// <param name="other">Данные с которыми идёт сравнение.</param>
+		/// <returns>Результат сравнения.</returns>
 		public bool Equals(UserData other)
 		{
 			return UserName == other?.UserName;

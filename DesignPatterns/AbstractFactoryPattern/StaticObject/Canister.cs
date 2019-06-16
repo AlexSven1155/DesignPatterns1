@@ -11,6 +11,9 @@ namespace DesignPatterns.AbstractFactoryPattern.StaticObject
 	[Serializable]
 	public class Canister : BaseStaticObject
 	{
+
+		public Canister(SerializationInfo info, StreamingContext context) : base(info, context) { }
+
 		/// <summary>
 		/// Создать канистру.
 		/// </summary>
@@ -28,6 +31,5 @@ namespace DesignPatterns.AbstractFactoryPattern.StaticObject
 			Type = StaticObjectType.Petrol;
 		}
 
-		public Canister(SerializationInfo info, StreamingContext context) : base(info, context) { }
 	}
 }

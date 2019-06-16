@@ -21,7 +21,7 @@ namespace DesignPatterns.UserContext
 		public UserData UserData { get; private set; }
 
 		/// <summary>
-		/// Ссылка на репозиторий с данными.
+		/// Репозиторий с данными.
 		/// </summary>
 		private readonly Repository _repository = new Repository();
 
@@ -32,28 +32,23 @@ namespace DesignPatterns.UserContext
 		/// <param name="userName">Имя игрока.</param>
 		public UserSession(string userName)
 		{
-			if (string.IsNullOrEmpty(userName))
+			if (string.IsNullOrWhiteSpace(userName))
 			{
 				throw new ArgumentNullException(nameof(userName));
 			}
 
-			UserData = new UserData
-			{
-				UserName = userName
-			};
-
-			InitUserData();
+			InitUserData(userName);
 		}
 
 		/// <summary>
 		/// Инициализация данных игрока.
 		/// </summary>
-		private void InitUserData()
+		private void InitUserData(string userName)
 		{
-			if (string.IsNullOrEmpty(UserData.UserName))
+			UserData = new UserData
 			{
-				throw new ArgumentNullException(nameof(UserData.UserName));
-			}
+				UserName = userName
+			};
 
 			// попытка загрузить игру из репозитория
 			if (LoadGame())
@@ -81,6 +76,7 @@ namespace DesignPatterns.UserContext
 		public void SaveGame()
 		{
 			_repository.SavedUserData.AddData(UserData);
+			_repository.SavedUserData.SaveData();
 		}
 
 		/// <summary>

@@ -107,7 +107,7 @@ namespace DesignPatterns.AbstractFactoryPattern.Machines.BaseClasses
 		/// <summary>
 		/// Инициализация свойств машины.
 		/// </summary>
-		protected void InitProperties()
+		protected virtual void InitProperties()
 		{
 			ArmorResistance = (Body.ArmorResistance + Suspension.ArmorResistance) / 2;
 			MaxArmorPoints = Suspension.MaxArmorPoints + Body.MaxArmorPoints;
@@ -134,7 +134,7 @@ namespace DesignPatterns.AbstractFactoryPattern.Machines.BaseClasses
 		/// Выстрелить.
 		/// </summary>
 		/// <returns>Урон.</returns>
-		public int Shoot()
+		public virtual int Shoot()
 		{
 			return Gun.Shoot();
 		}
@@ -144,7 +144,7 @@ namespace DesignPatterns.AbstractFactoryPattern.Machines.BaseClasses
 		/// </summary>
 		/// <param name="damage">Количество урона.</param>
 		/// <returns>Полученный урон.</returns>
-		public int GetDamage(int damage)
+		public virtual int GetDamage(int damage)
 		{
 			var inflictedDamage = 0;
 			if (ArmorPoints > 0)
@@ -183,7 +183,7 @@ namespace DesignPatterns.AbstractFactoryPattern.Machines.BaseClasses
 		/// Передвижение.
 		/// </summary>
 		/// <returns>Оставшееся расстояние.</returns>
-		public int Move(int distance)
+		public virtual int Move(int distance)
 		{
 			if (Suspension.QuantityFuel == 0)
 			{
@@ -209,7 +209,7 @@ namespace DesignPatterns.AbstractFactoryPattern.Machines.BaseClasses
 		/// </summary>
 		/// <param name="amountFuel">Количество бензина для заправки.</param>
 		/// <returns>Количество бензина после заправки.</returns>
-		public int TankUp(int amountFuel)
+		public virtual int TankUp(int amountFuel)
 		{
 			if (amountFuel < 0)
 			{

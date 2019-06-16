@@ -16,7 +16,7 @@ let v = new Vue({
 	},
 	computed: {
 		isLoggedIn() {
-			return this.user !== "";
+			//return this.user !== "";
 		}
 	}
 });

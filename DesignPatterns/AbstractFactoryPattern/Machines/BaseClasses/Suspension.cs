@@ -11,6 +11,17 @@ namespace DesignPatterns.AbstractFactoryPattern.Machines.BaseClasses
 	[Serializable]
 	public class Suspension : IBaseMachinePart, ISerializable, IEquatable<Suspension>
 	{
+		public Suspension(Suspension suspensionData)
+		{
+			Level = suspensionData.Level;
+			MaxLifePoints = suspensionData.MaxLifePoints;
+			MaxArmorPoints = suspensionData.MaxArmorPoints;
+			ArmorResistance = suspensionData.ArmorResistance;
+			EnginePower = suspensionData.EnginePower;
+			CapacityFuelTank = suspensionData.CapacityFuelTank;
+			FuelConsumption = suspensionData.FuelConsumption;
+		}
+
 		public Suspension(string name,
 			int level,
 			int maxLifePoints,

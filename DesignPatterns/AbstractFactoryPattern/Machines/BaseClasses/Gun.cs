@@ -13,6 +13,18 @@ namespace DesignPatterns.AbstractFactoryPattern.Machines.BaseClasses
 		Random _random = new Random();
 
 		/// <summary>
+		/// Осздаёт оружие на основе существующего экземпляра.
+		/// </summary>
+		/// <param name="gunData">Новый экземпляр оружия.</param>
+		public Gun(Gun gunData)
+		{
+			Name = gunData.Name;
+			Level = gunData.Level;
+			MinDamage = gunData.MinDamage;
+			MaxDamage = gunData.MaxDamage;
+		}
+
+		/// <summary>
 		/// Базовый конструктор.
 		/// </summary>
 		/// <param name="name">Имя</param>

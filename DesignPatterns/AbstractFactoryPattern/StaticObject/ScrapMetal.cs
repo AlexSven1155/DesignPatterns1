@@ -11,6 +11,8 @@ namespace DesignPatterns.AbstractFactoryPattern.StaticObject
 	[Serializable]
 	public class ScrapMetal : BaseStaticObject
 	{
+		public ScrapMetal(SerializationInfo info, StreamingContext context) : base(info, context) { }
+
 		/// <summary>
 		/// Создать металлолом.
 		/// </summary>
@@ -26,7 +28,5 @@ namespace DesignPatterns.AbstractFactoryPattern.StaticObject
 			Size = Math.Max(Price / 100, 1);
 			Type = StaticObjectType.Armor;
 		}
-
-		public ScrapMetal(SerializationInfo info, StreamingContext context) : base(info, context) { }
 	}
 }

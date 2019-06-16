@@ -1,23 +1,26 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Runtime.Serialization.Formatters.Binary;
-
 namespace DesignPatterns.ProcessingData
 {
+	using System;
+	using System.Collections.Generic;
+	using System.IO;
+	using System.Runtime.Serialization.Formatters.Binary;
+
 	/// <summary>
-	/// Класс работы с файлами данных игры.
+	/// Класс-сереализатор для работы с файлами данных игры.
 	/// </summary>
 	public static class Serializer
 	{
 		/// <summary>
-		/// Путь к основной папке.
+		/// Путь к папке с сохранениями.
 		/// </summary>
 		private static readonly string MainFolderPath = Path.Combine(
 			Environment.GetFolderPath(Environment.SpecialFolder.CommonDocuments),
 			"DesignPatterns"
 		);
 
+		/// <summary>
+		/// При инициализации создаёт каталог для данных.
+		/// </summary>
 		static Serializer()
 		{
 			if (!Directory.Exists(MainFolderPath))
@@ -28,6 +31,7 @@ namespace DesignPatterns.ProcessingData
 
 		/// <summary>
 		/// Сериализация данных в файл.
+		/// Если файла нет, то он создаётся.
 		/// </summary>
 		public static void SerializeUserData<T>(List<T> userData, string fileName)
 		{
@@ -45,7 +49,7 @@ namespace DesignPatterns.ProcessingData
 		{
 			if (!File.Exists(Path.Combine(MainFolderPath, fileName)))
 			{
-				return null;
+				return new List<T>();
 			}
 
 			using (var fileStream = File.Open(Path.Combine(MainFolderPath, fileName), FileMode.Open))

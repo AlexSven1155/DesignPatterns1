@@ -1,12 +1,14 @@
 namespace DesignPatterns.ProcessingData
 {
+	using System;
 	using System.Collections.Generic;
 	using System.Runtime.Serialization;
 
 	/// <summary>
 	/// Интефейс для работы с таблицей данных.
 	/// </summary>
-	public interface IRepositoryTable<T> where T : ISerializable
+	/// <typeparam name="T">Тип используемой модели данных.</typeparam>
+	public interface IRepositoryData<T> where T : ISerializable, IEquatable<T>
 	{
 		/// <summary>
 		/// Таблица с даннными.
@@ -16,7 +18,7 @@ namespace DesignPatterns.ProcessingData
 		/// <summary>
 		/// Добавить экземпляр в список данных.
 		/// </summary>
-		/// <param name="data">Экземпляр класса</param>
+		/// <param name="data">Экземпляр класса.</param>
 		void AddData(T data);
 
 		/// <summary>
@@ -24,5 +26,15 @@ namespace DesignPatterns.ProcessingData
 		/// </summary>
 		/// <param name="data">Экземпляр класса.</param>
 		void RemoveData(T data);
+
+		/// <summary>
+		/// Сохраняет данные.
+		/// </summary>
+		void SaveData();
+
+		/// <summary>
+		/// Загружает данные.
+		/// </summary>
+		void LoadData();
 	}
 }

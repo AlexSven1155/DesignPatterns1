@@ -12,6 +12,16 @@ namespace DesignPatterns.AbstractFactoryPattern.Machines.BaseClasses
 	[Serializable]
 	public class BodyMachine : IBaseMachinePart, ISerializable, IEquatable<BodyMachine>
 	{
+		public BodyMachine(BodyMachine bodyMachineData)
+		{
+			Level = bodyMachineData.Level;
+			MaxLifePoints = bodyMachineData.MaxLifePoints;
+			MaxArmorPoints = bodyMachineData.MaxArmorPoints;
+			ArmorResistance = bodyMachineData.ArmorResistance;
+			SizeInventory = bodyMachineData.SizeInventory;
+			Inventory = bodyMachineData.Inventory;
+		}
+
 		/// <summary>
 		/// Базовый конструктор.
 		/// </summary>

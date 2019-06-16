@@ -35,11 +35,7 @@ namespace DesignPatterns.AbstractFactoryPattern.Machines.Factories
 			var result = (from gun in _repository.GunData.TableData
 						  where gun.Level == _level
 						  select gun).ToList();
-			var gunData = result[_random.Next(0, result.Count)];
-			return new Gun(gunData.Name,
-				gunData.Level,
-				gunData.MinDamage,
-				gunData.MaxDamage);
+			return new Gun(result[_random.Next(0, result.Count)]);
 		}
 
 		/// <summary>
@@ -52,15 +48,7 @@ namespace DesignPatterns.AbstractFactoryPattern.Machines.Factories
 						  where suspension.Level == _level
 						  select suspension).ToList();
 			var suspensionData = result[_random.Next(0, result.Count)];
-			return new Suspension(suspensionData.Name,
-						suspensionData.Level,
-						suspensionData.MaxLifePoints,
-						suspensionData.MaxArmorPoints,
-						suspensionData.ArmorResistance,
-						suspensionData.EnginePower,
-						suspensionData.CapacityFuelTank,
-						suspensionData.FuelConsumption,
-						suspensionData.ModeMotion);
+			return new Suspension(suspensionData);
 		}
 
 		/// <summary>
@@ -73,12 +61,7 @@ namespace DesignPatterns.AbstractFactoryPattern.Machines.Factories
 						  where body.Level == _level
 						  select body).ToList();
 			var bodyData = result[_random.Next(0, result.Count)];
-			return new BodyMachine(bodyData.Name,
-				bodyData.Level,
-				bodyData.MaxLifePoints,
-				bodyData.MaxArmorPoints,
-				bodyData.ArmorResistance,
-				bodyData.SizeInventory);
+			return new BodyMachine(bodyData);
 		}
 	}
 }

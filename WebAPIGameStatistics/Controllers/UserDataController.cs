@@ -1,8 +1,8 @@
-using Microsoft.AspNetCore.Mvc;
-using DesignPatterns.UserContext;
-using WebAPIGameStatistics.Models;
-using DesignPatterns.ProcessingData;
 using DesignPatterns.AbstractFactoryPattern.Machines;
+using DesignPatterns.ProcessingData;
+using DesignPatterns.UserContext;
+using Microsoft.AspNetCore.Mvc;
+using WebAPIGameStatistics.Repositories;
 
 namespace WebAPIGameStatistics.Controllers
 {
@@ -16,11 +16,11 @@ namespace WebAPIGameStatistics.Controllers
 		/// <summary>
 		/// Модель предоставления и обработки данных пользователя.
 		/// </summary>
-		private readonly UserSessionModel _userSessionModel;
+		private readonly UserSessionRepository _userSessionRepository;
 
-		public UserDataController(IRepositoryTable<UserData> userSessionRepo)
+		public UserDataController(IRepositoryData<UserData> userSessionRepo)
 		{
-			_userSessionModel = new UserSessionModel(userSessionRepo);
+			_userSessionRepository = new UserSessionRepository(userSessionRepo);
 		}
 
 		/// <summary>
@@ -32,7 +32,7 @@ namespace WebAPIGameStatistics.Controllers
 		[Route("GetUserStatistic")]
 		public ActionResult<UserStatistics> GetUserStatistic([FromBody]string userName)
 		{
-			return _userSessionModel.GetUserStatistics(userName);
+			return _userSessionRepository.GetUserStatistics(userName);
 		}
 
 		/// <summary>
@@ -44,19 +44,20 @@ namespace WebAPIGameStatistics.Controllers
 		[ActionName("GetMachineInfo")]
 		public ActionResult<UserMachine> GetUserMachineInfo([FromBody]string userName)
 		{
-			return _userSessionModel.GetUserMachine(userName);
+			return _userSessionRepository.GetUserMachine(userName);
 		}
 
 		/// <summary>
 		/// Метод меняет имя машины пользователя.
 		/// </summary>
-		/// <param name="data">Данные: 1. Имя игрока 2. Новое имя машины</param>
+		/// <param name="userName">Имя пользователя.</param>
+		/// <param name="newMachineName">Новое название машины.</param>
 		/// <returns>Результат операции.</returns>
 		[HttpPost]
 		[ActionName("SetMachineName")]
-		public bool SetMachineName([FromBody]string[] data)
+		public bool SetMachineName([FromBody]string userName, [FromBody]string newMachineName)
 		{
-			return _userSessionModel.SetNewNameMachine(data[0], data[1]);
+			return _userSessionRepository.SetNewNameMachine(userName, newMachineName);
 		}
 	}
 }

@@ -10,6 +10,9 @@ using DesignPatterns.AbstractFactoryPattern.Machines.Factories;
 
 namespace WebApiTest
 {
+	/// <summary>
+	/// Тестирование методов контроллера.
+	/// </summary>
 	public class TestUserSession
 	{
 		/// <summary>
@@ -31,11 +34,11 @@ namespace WebApiTest
 			}
 		};
 
-		private readonly Mock<IRepositoryTable<UserData>> _mock;
+		private readonly Mock<IRepositoryData<UserData>> _mock;
 
 		public TestUserSession()
 		{
-			_mock = new Mock<IRepositoryTable<UserData>>();
+			_mock = new Mock<IRepositoryData<UserData>>();
 			_mock.Setup(a => a.TableData).Returns(_testData);
 		}
 
@@ -44,7 +47,7 @@ namespace WebApiTest
 		/// Вариант с удачной авторизацией.
 		/// </summary>
 		[Fact]
-		public void TestAuthorizationController()
+		public void TestSuccessAuthorization()
 		{
 			var authorizationController = new AuthorizationController(_mock.Object);
 			var resultUserList = authorizationController.GetUsersList();

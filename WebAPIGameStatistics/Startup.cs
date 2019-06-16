@@ -1,10 +1,10 @@
 using DesignPatterns;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Http;
-using DesignPatterns.UserContext;
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Builder;
 using DesignPatterns.ProcessingData;
+using DesignPatterns.UserContext;
+using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -27,7 +27,7 @@ namespace WebAPIGameStatistics
 				options.MinimumSameSitePolicy = SameSiteMode.None;
 			});
 
-			services.AddScoped<IRepositoryTable<UserData>>(a => new RepositoryTable<UserData>(StringHelper.NameFiles.SavedUserData));
+			services.AddScoped<IRepositoryData<UserData>>(a => new RepositoryData<UserData>(StringHelper.NameFiles.SavedUserData));
 			services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 			services.AddDistributedMemoryCache();
 			services.AddSession();

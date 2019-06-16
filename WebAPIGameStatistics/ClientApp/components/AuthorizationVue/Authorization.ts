@@ -15,7 +15,7 @@ export default Vue.extend({
 				type: 'GET',
 				contentType: "application/json;charset=utf-8",
 				success(responseData) {
-					scope.users = responseData;
+					//users = responseData;
 				},
 				error(a, b, c) {
 					alert(a + '\n' + b + '\n' + c);

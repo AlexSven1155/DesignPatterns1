@@ -1,6 +1,8 @@
 namespace DesignPatterns.ProcessingData
 {
 	using AbstractFactoryPattern.Machines.BaseClasses;
+	using System;
+	using System.Runtime.Serialization;
 	using UserContext;
 
 	/// <summary>
@@ -8,20 +10,46 @@ namespace DesignPatterns.ProcessingData
 	/// </summary>
 	public class Repository
 	{
-		public IRepositoryTable<Gun> GunData;
-		public IRepositoryTable<Suspension> SuspensionsData;
-		public IRepositoryTable<BodyMachine> BodyMachinesData;
-		public IRepositoryTable<UserData> SavedUserData;
+		/// <summary>
+		/// Репозиторий пушек.
+		/// </summary>
+		public IRepositoryData<Gun> GunData { get; }
 
 		/// <summary>
-		/// Инициализируем классы данных.
+		/// Репозиторий подвесок.
+		/// </summary>
+		public IRepositoryData<Suspension> SuspensionsData { get; }
+
+		/// <summary>
+		/// Репзиторий кузовов.
+		/// </summary>
+		public IRepositoryData<BodyMachine> BodyMachinesData { get; }
+
+		/// <summary>
+		/// Репозиторий данных игроков.
+		/// </summary>
+		public IRepositoryData<UserData> SavedUserData { get; }
+
+		/// <summary>
+		/// Иниациализирует репозиторий с указанными данными.
+		/// </summary>
+		/// <typeparam name="T">Тип данных репозитория.</typeparam>
+		/// <param name="fileName">Название файла с данными.</param>
+		/// <returns>Репозиторий.</returns>
+		public IRepositoryData<T> GetRepository<T>(string fileName) where T : ISerializable, IEquatable<T>
+		{
+			return new RepositoryData<T>(fileName);
+		}
+
+		/// <summary>
+		/// Инициализируем данные игры.
 		/// </summary>
 		public Repository()
 		{
-			GunData = new RepositoryTable<Gun>(StringHelper.NameFiles.GunData);
-			SuspensionsData = new RepositoryTable<Suspension>(StringHelper.NameFiles.SuspensionData);
-			BodyMachinesData = new RepositoryTable<BodyMachine>(StringHelper.NameFiles.BodyMachineData);
-			SavedUserData = new RepositoryTable<UserData>(StringHelper.NameFiles.SavedUserData);
+			GunData = GetRepository<Gun>(StringHelper.NameFiles.GunData);
+			SuspensionsData = GetRepository<Suspension>(StringHelper.NameFiles.SuspensionData);
+			BodyMachinesData = GetRepository<BodyMachine>(StringHelper.NameFiles.BodyMachineData);
+			SavedUserData = GetRepository<UserData>(StringHelper.NameFiles.SavedUserData);
 
 			if (GunData.TableData.Count == 0)
 			{

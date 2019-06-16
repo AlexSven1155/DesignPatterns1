@@ -71,8 +71,8 @@
     <Compile Include="AbstractFactoryPattern\StaticObject\ScrapMetal.cs" />
     <Compile Include="AbstractFactoryPattern\StaticObject\Canister.cs" />
     <Compile Include="AbstractFactoryPattern\StaticObject\BaseClasses\BaseStaticObject.cs" />
-    <Compile Include="ProcessingData\RepositoryTable.cs" />
-    <Compile Include="ProcessingData\IRepositoryTable.cs" />
+    <Compile Include="ProcessingData\RepositoryData.cs" />
+    <Compile Include="ProcessingData\IRepositoryData.cs" />
     <Compile Include="UserContext\UserStatistics.cs" />
     <Compile Include="StringHelper.cs" />
     <Compile Include="MediatorPattern\MachineIntermediary.cs" />

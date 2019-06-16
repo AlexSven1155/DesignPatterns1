@@ -13,7 +13,7 @@ namespace DesignPatterns.AbstractFactoryPattern.Machines
 	/// Машина игрока.
 	/// </summary>
 	[Serializable]
-	public class UserMachine : Machine, ISerializable
+	public sealed class UserMachine : Machine, ISerializable, IEquatable<UserMachine>
 	{
 		/// <summary>
 		/// Инвентарь.
@@ -65,12 +65,7 @@ namespace DesignPatterns.AbstractFactoryPattern.Machines
 		/// <param name="inventory">Инвентарь</param>
 		public UserMachine(string name, Suspension suspension, BodyMachine bodyMachine, Gun gun, List<IBaseStaticObject> inventory = null)
 		{
-			if (string.IsNullOrEmpty(name))
-			{
-				throw new ArgumentNullException(nameof(name));
-			}
-			Name = name;
-
+			Name = string.IsNullOrEmpty(name) ? throw new ArgumentNullException(nameof(name)) : name;
 			Gun = gun ?? throw new ArgumentNullException(nameof(gun));
 			Body = bodyMachine ?? throw new ArgumentNullException(nameof(bodyMachine));
 			Suspension = suspension ?? throw new ArgumentNullException(nameof(suspension));
@@ -204,6 +199,16 @@ namespace DesignPatterns.AbstractFactoryPattern.Machines
 			Suspension = (Suspension)info.GetValue("Suspension", typeof(Suspension));
 			ArmorPoints = (int)info.GetValue("ArmorPoints", typeof(int));
 			InitProperties();
+		}
+
+		public bool Equals(Machine obj)
+		{
+			return Name == obj?.Name;
+		}
+
+		public bool Equals(UserMachine other)
+		{
+			return Name == other?.Name;
 		}
 	}
 }

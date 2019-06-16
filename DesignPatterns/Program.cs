@@ -143,7 +143,6 @@ namespace DesignPatterns
 				case "1":
 					Traveler();
 					break;
-
 				case "2":
 					try
 					{
@@ -161,7 +160,6 @@ namespace DesignPatterns
 						GameMenu();
 					}
 					break;
-
 				case "3":
 					try
 					{
@@ -188,11 +186,9 @@ namespace DesignPatterns
 						GameMenu();
 					}
 					break;
-
 				case "4":
 					MainMenu();
 					break;
-
 				default:
 					Console.WriteLine("Что-то ты не то ввёл! Попробуй снова!");
 					Console.WriteLine("Enter чтобы продолжить...");
@@ -297,7 +293,7 @@ namespace DesignPatterns
 			}
 
 			//Движение прошло без находок и приключений
-			if (moveResult.GetType().FullName == typeof(int).ToString())
+			if (moveResult is int)
 			{
 				_userSession.UserData.UserStatistics.KilometersCovered += (int)moveResult;
 				Console.WriteLine($"Пройдено: {moveResult} км.");
@@ -421,8 +417,6 @@ namespace DesignPatterns
 							  + $"--Бензин: {enemy.Suspension.QuantityFuel}{Environment.NewLine}"
 							  + $"--Скорость: {enemy.Suspension.MaxSpeed}{Environment.NewLine}");
 		}
-
-
 
 		/// <summary>
 		/// Выводит информацию о содержимом инвентаря игрока.

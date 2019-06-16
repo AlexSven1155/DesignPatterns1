@@ -1,12 +1,11 @@
-using Moq;
-using Xunit;
-using System.Linq;
-using DesignPatterns.UserContext;
-using System.Collections.Generic;
-using DesignPatterns.ProcessingData;
-using WebAPIGameStatistics.Controllers;
 using DesignPatterns.AbstractFactoryPattern.Machines;
 using DesignPatterns.AbstractFactoryPattern.Machines.Factories;
+using DesignPatterns.ProcessingData;
+using DesignPatterns.UserContext;
+using Moq;
+using System.Collections.Generic;
+using WebAPIGameStatistics.Controllers;
+using Xunit;
 
 namespace WebApiTest
 {
@@ -50,12 +49,19 @@ namespace WebApiTest
 		public void TestSuccessAuthorization()
 		{
 			var authorizationController = new AuthorizationController(_mock.Object);
-			var resultUserList = authorizationController.GetUsersList();
-			var resultTrueAuthorizeUser = authorizationController.AuthorizeUser("Name1");
-			var resultFalseAuthorizeUser = authorizationController.AuthorizeUser("Name");
-			Assert.False(resultFalseAuthorizeUser);
-			Assert.Equal(_testData.Select(e => e.UserName), resultUserList);
-			Assert.True(resultTrueAuthorizeUser);
+			Assert.True(authorizationController.AuthorizeUser("Name1"));
+		}
+
+		/// <summary>
+		/// Тестирование контроллера авторизации.
+		/// Вариант с неудачной авторизацией.
+		/// </summary>
+		[Fact]
+		public void TestFailAuthorization()
+		{
+			var authorizationController = new AuthorizationController(_mock.Object);
+			var result = authorizationController.AuthorizeUser("Name");
+			Assert.False(result);
 		}
 
 		/// <summary>
@@ -67,6 +73,8 @@ namespace WebApiTest
 			var userDataController = new UserDataController(_mock.Object);
 			var result = userDataController.GetUserStatistic("Name1");
 			Assert.NotNull(result);
+			Assert.NotNull(result.Value);
+			Assert.True(result.Value is UserStatistics);
 		}
 
 		/// <summary>
@@ -78,6 +86,8 @@ namespace WebApiTest
 			var userDataController = new UserDataController(_mock.Object);
 			var result = userDataController.GetUserMachineInfo("Name1");
 			Assert.NotNull(result);
+			Assert.NotNull(result.Value);
+			Assert.True(result.Value is UserMachine);
 		}
 
 		/// <summary>
@@ -86,15 +96,15 @@ namespace WebApiTest
 		[Fact]
 		public void TestSetNewMachineName()
 		{
-			string newName = "NewMachineName";
-
+			var newMachineName = "NewMachineName";
 			var userDataController = new UserDataController(_mock.Object);
-			// при вызове метода нужно передавать 2 параметра в массиве [0] - имя пользователя, [1] - новое имя машины
-			var setMachineNameResult = userDataController.SetMachineName(new [] { "Name1", newName });
+			var setMachineNameResult = userDataController.SetMachineName("Name1", newMachineName);
 			Assert.True(setMachineNameResult);
-
 			var userMachineInfo = userDataController.GetUserMachineInfo("Name1");
-			Assert.True(userMachineInfo.Value.Name == newName);
+			Assert.NotNull(userMachineInfo);
+			Assert.NotNull(userMachineInfo.Value);
+			Assert.True(userMachineInfo.Value is UserMachine);
+			Assert.True(userMachineInfo.Value.Name == newMachineName);
 		}
 	}
 }
